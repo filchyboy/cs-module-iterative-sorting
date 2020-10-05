@@ -47,5 +47,30 @@ What is the time and space complexity of the counting sort algorithm?
 
 def counting_sort(arr, maximum=None):
     # Your code here
-    if collection == []:
+    if arr == []:
         return []
+
+    arr_len = len(arr)
+    arr_max = max(arr)
+    arr_min = min(arr)
+
+    counting_arr_length = arr_max + 1 - arr_min
+    counting_arr = [0] * counting_arr_length
+
+    for num in arr:
+        counting_arr[num - arr_min] += 1
+
+    for i in range(1, counting_arr_length):
+        counting_arr[i] = counting_arr[i] + counting_arr[i - 1]
+
+    ordered = [0] * arr_len
+
+    for i in reversed(range(0, arr_len)):
+        ordered[counting_arr[arr[i] - arr_min] - 1] = arr[i]
+        counting_arr[arr[i] - arr_min] -= 1
+
+    return ordered
+
+print(counting_sort([-2, -5, -45]))
+print(counting_sort([-2, 5, -45]))
+print(counting_sort([2, 5, 45]))
