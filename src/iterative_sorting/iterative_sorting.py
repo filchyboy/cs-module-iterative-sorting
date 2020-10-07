@@ -74,3 +74,4 @@ def counting_sort(arr, maximum=None):
 print(counting_sort([-2, -5, -45]))
 print(counting_sort([-2, 5, -45]))
 print(counting_sort([2, 5, 45]))
+print(counting_sort([2, 5, 45, -34, 2, 1, 1, -5]))
